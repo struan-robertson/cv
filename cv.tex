@@ -1,0 +1,281 @@
+%-------------------------
+% Rezume, a latex resume template for developers
+% https://www.overleaf.com/latex/templates/rezume/kfrvqywfkwjs
+% Author : Nanu Panchamurthy
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+
+% Hope this resume template helps you land an awesome job. If you found this helpful, please consider starring the github repo here, .
+%-------------------------
+
+
+
+%------------PACKAGES----------------
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{verbatim} % reimplements the "verbatim" and "verbatim*" environments
+
+\usepackage{titlesec} % provides an interface to sectioning commands i.e. custom elements
+
+\usepackage{color} % provides both foreground and background color management
+
+\usepackage{enumitem} % provides control over enumerate, itemize and description
+
+\usepackage{fancyhdr} % provides extensive facilities for constructing headers, footers and also controlling their use
+
+\usepackage{tabularx} % defines an environment tabularx, extension of "tabular" with an extra designator x, paragraph like column whose width automatically expands to fill the width of the environment
+
+\usepackage{latexsym} % provides mathematical symbols
+
+\usepackage{marvosym} % provides martin vogel's symbol font which contains various symbols
+
+\usepackage[empty]{fullpage} % sets margins to one inch and removes headers, footers etc..
+
+\usepackage[hidelinks]{hyperref} % removes color and shadow of hyperlinks
+
+\usepackage[normalem]{ulem} % provides "\ul" (uline) command which will break at line breaks
+
+\usepackage[english]{babel} % provides culturally determined typographical rules for wide range of languages
+%-----------------------------------------
+
+\input glyphtounicode % converts glyph names to unicode
+\pdfgentounicode=1 % ensures pdfs generated are ats readable
+
+%----------FONT OPTIONS-------------------
+\usepackage[default]{sourcesanspro} % uses the font source sans pro
+\urlstyle{same} % changes url font from default urlfont to font being used by the document
+%-----------------------------------------
+
+
+%----------MARGIN OPTIONS-----------------
+\pagestyle{fancy} % set page style to one configured by fancyhdr
+\fancyhf{} % clear all header and footer fields
+
+\renewcommand{\headrulewidth}{0in} % sets thickness of linerule under header to zero
+\renewcommand{\footrulewidth}{0in} % sets thickness of linerule over footer to zero
+
+\setlength{\tabcolsep}{0in} % sets thickness of column separator in tables to zero
+
+% origin of the document is one inch from the top and from and the left
+% oddsidemargin and evensidemargin both refer to the left margin
+% right margin is indirectly set using oddsidemargin
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\topmargin}{-0.5in}
+
+\addtolength{\textwidth}{1.0in} % sets width of text area in the page to one inch
+\addtolength{\textheight}{1.0in} % sets height of text area in the page to one inch
+
+\raggedbottom{} % makes all pages the height of current page, no extra vertical space added
+\raggedright{} % makes all pages the width of current page, no extra horizontal space added
+%------------------------------------------
+
+
+%--------SECTIONING COMMANDS---------
+% \titleformat{&lt;command&gt;}
+%   [&lt;shape&gt;]{&lt;format&gt;}{&lt;label&gt;}{&lt;sep&gt;}
+%     {&lt;before-code&gt;}[&lt;after-code&gt;]
+
+% command is the sectioning command to be redefined
+% shape is the style of the font; scshape stands for small caps style
+% format is the format to be applied to whole title- label and text; absent here
+% label defines the label
+% sep is the horizontal separation between label and title body
+% before-code is the code to be executed before
+% after-code is the code to be executed after
+
+\titleformat{\section}
+  {\scshape\large}{}
+    {0em}{\color{blue}}[\color{black}\titlerule\vspace{0pt}]
+%-------------------------------------
+
+
+%--------REDEFINITIONS----------------
+% redefines the style of the bullet point
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+% redefines the underline depth to 2pt
+\renewcommand{\ULdepth}{2pt}
+%-------------------------------------
+
+
+%--------CUSTOM COMMANDS--------------
+%\vspace{} defines a vertical space of given size, modifying this in custom commands can help stretch or shrink resume to remove or add content
+
+% resumeItem renders a bullet point
+\newcommand{\resumeItem}[1]{
+  \item\small{#1}
+}
+
+% commands to start and end itemization of resumeItem, rightmargin set to 0.11in to avoid the overflow of resumetItem beyond whatever resumeItemHeading is being used
+\newcommand{\resumeItemListStart}{\begin{itemize}[rightmargin=0.11in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% resumeSectionType renders a bolded type to be used under a section, used as skill type here, middle element is used to keep ":"s in the same vertical line
+\newcommand{\resumeSectionType}[2]{
+  \item\begin{tabular*}{0.96\textwidth}[t]{
+    p{0.19\linewidth}p{0.81\linewidth}
+  }
+    \textbf{#1} & #2
+  \end{tabular*}\vspace{-2pt}
+}
+
+% resumeTrioHeading renders three elements in three columns with second element being italicized and first element bolded, can be used for projects with three elements
+\newcommand{\resumeTrioHeading}[3]{
+  \item\small{
+    \begin{tabular*}{0.96\textwidth}[t]{
+      l@{\extracolsep{\fill}}c@{\extracolsep{\fill}}r
+    }
+      \textbf{#1} & \textit{#2} & #3
+    \end{tabular*}
+  }
+}
+
+% resumeTrioHeading renders three elements in three columns with second element being italicized and first element bolded, can be used for projects with three elements
+\newcommand{\resumeRefereeHeading}[4]{
+ \item\begin{tabular*}{0.96\textwidth}[t]{
+    p{0.19\linewidth}p{0.81\linewidth}
+  }
+         \textbf{#1} & #2 \\
+         \textit{\small #3} & #4 \\
+  \end{tabular*}\vspace{-2pt}
+}
+
+% resumeQuadHeading renders four elements in a two columns with the second row being italicized and first element of first row bolded, can be used for experience and projects with four elements
+\newcommand{\resumeQuadHeading}[4]{
+  \item
+  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small#3} & \textit{\small #4} \\
+  \end{tabular*}
+}
+
+% resumeQuadHeadingChild renders the second row of resumeQuadHeading, can be used for experience if different roles in the same company need to added
+\newcommand{\resumeQuadHeadingChild}[2]{
+  \item
+  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{\small#1} & {\small#2} \\
+  \end{tabular*}
+}
+
+% commands to start and end itemization of resumeQuadHeading, lefmargin for left indent of 0.15in for resumeItems
+\newcommand{\resumeHeadingListStart}{
+  \begin{itemize}[leftmargin=0.15in, label={}]
+}
+\newcommand{\resumeHeadingListEnd}{\end{itemize}}
+%-------------------------------------------
+
+%__________________RESUME____________________
+% You can rearrange sections in any order you may prefer
+\begin{document}
+
+%-----------CONTACT DETAILS------------------
+% Make sure all the details are correct, you can add more links in the first row of second column if needed
+
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\Huge Struan Robertson \vspace{2pt}} & % row = 1, col = 1
+          Flat C, 105B Nethergate, Dundee, Scotland \\ % row = 1, col = 2
+  \href{https://struanrobertson.co.uk}{\uline{struanrobertson.co.uk}} $|$ % row = 2, col = 1
+  \href{https://linkedin.com/in/struanjrobertson}{\uline{LinkedIn}} $|$ % row = 2, col = 1
+  \href{https://github.com/struan-robertson}{\uline{GitHub}} $|$ % row = 2, col = 1
+  \href{https://sr.ht/~struan/}{\uline{SourceHut}} & % row = 2, col = 1
+  \href{mailto:contact@struanrobertson.co.uk}{\uline{contact@struanrobertson.co.uk}} $|$ % row = 2, col = 2
+  \href{tel:(+44) 478769995}{\uline{(+44) 7478769995}} \\ % row = 2, col = 2
+\end{tabular*}
+%--------------------------------------------
+
+
+%-----------SUMMARY--------------------------
+% Keep this short, simple and straigth to point
+
+\section{Full Stack Developer}
+% TODO need to change, two bold texts and say 'strong' too many times
+\small{
+  Applied Computing student with a \textbf{strong interest in AI and Data Science}.
+  Strong experience with a wide bredth of computing topics gained through \textbf{years of personal interest in the subject}.
+  \textbf{Excellent communication and organisational skills} developed through a range of extra‑corricular activities.
+}
+%--------------------------------------------
+
+
+%--------------SKILLS------------------------
+% Add or remove resumeSectionTypes according to your needs
+
+\section{Technical Skills}
+  \resumeHeadingListStart{}
+    \resumeSectionType{Languages}{Rust, Python, Nim, C, Scala, Haskell, JavaScript, Shell, C\#, Nix, LaTex}
+    \resumeSectionType{ML/Data Science}{PyTorch, Numpy, Pandas, Scikit-Learn, GDAL, Jax}
+    \resumeSectionType{Big Data Analysis}{Hadoop, Apache Spark, Data Warehousing, Concurrent Systems, Frequent Pattern Mining}
+    \resumeSectionType{Back-end}{Linux, OpenBSD, REST API, Azure Functions, Docker}
+    \resumeSectionType{Game Development}{Godot, Unity}
+  \resumeHeadingListEnd{}
+%--------------------------------------------
+
+%-----------EDUCATION-------------------------
+% Mention your CGPA, if its good, in the first row of second column
+
+\section{Education}
+  \resumeHeadingListStart{}
+    \resumeQuadHeading{University of Dundee}{Dundee, Scotland}
+    {BSc in Applied Computing (On track for a first class honors)}{Sep. 2019 -- Jun. 2023}
+      \resumeItemListStart{}
+        \resumeItem{\textbf{Fourth year modules:} Industial Project, Technology Innovation Management, Big Data Analysis, Research Frontiers, Dissertation (Terrain Model Processing with Machine Learning)}
+        \resumeItem{\textbf{Third year modules:} Networks, Information Security, Database Systems, Human Computer Interaction, Agile Software Engineering, Games Programming}
+      \resumeItemListEnd{}
+
+    \resumeQuadHeading{UHI West Highland College}{Online -- Fort William, Scotland}
+    {Foundation Apprenticeship in Information Technology: Software Development}{Sep. 2017 -- Jun. 2019}
+
+    % TODO create custom tri heading for high school as got multiple qualifications
+    % Or potentially just dont add the high school results as I dont think they reflect on me that well
+    \resumeQuadHeading{Mallaig High School}{Mallaig, Highlands, Scotland}
+    {}{Aug. 2013 -- Jun. 2019}
+      \resumeItemListStart{}
+        \resumeItem{\textbf{2019 Higher:} Computer Science \textbf{\textit{A}}, Mathematics \textbf{\textit{A}}, Chemistry \textbf{\textit{B}}}
+        \resumeItem{\textbf{2018 Higher:} English \textbf{\textit{B}}}
+        \resumeItem{\textbf{2017 Higher:} Physics \textbf{\textit{B}}}
+      \resumeHeadingListEnd{}
+
+  \resumeHeadingListEnd{}
+%---------------------------------------------
+
+
+%-----------EXPERIENCE-----------------------
+% Distill all your talking points to small bullet points which follow the pattern "challenge-action-result" for maximum efficiency. Try to quantify (use numbers) your points whenver possible, highlist words of importance
+
+\section{Experience}
+\resumeHeadingListStart{}
+  \resumeQuadHeading{Frontend Developer}{Mar. 2021 -- Present}
+  {532 Design}{Dundee, Scotland}
+    \resumeItemListStart{}
+      \resumeItem{Working part time as a Unity developer on an upcoming multiplayer mobile sports game}
+    \resumeItemListEnd{}
+
+  \resumeQuadHeading{Client Advisor}{Aug. 2021 -- Nov 2021}
+  {Hutchinson 3G}{Dundee, Scotland}
+    \resumeItemListStart{}
+      \resumeItem{Product expert}
+      \resumeItem{Advised clients on technical issues}
+    \resumeItemListEnd{}
+
+  \resumeQuadHeading{Intern}{Mar. 2018 -- Jun. 2019}
+  {SiteKit}{Isle of Skye, Scotland}
+    \resumeItemListStart{}
+      \resumeItem{Worked on website for charity Lucky2BHere}
+    \resumeItemListEnd{}
+
+\resumeHeadingListEnd{}
+%---------------------------------------------
+
+%--------------REFEREES------------------------
+% Add or remove resumeSectionTypes according to your needs
+
+\section{Referees}
+  \resumeHeadingListStart{}
+    \resumeRefereeHeading{Dr Iain Martin}{\href{mailto:i.martin@dundee.ac.uk}{\uline{i.martin@dundee.ac.uk}}}
+    {Dissertation Advisor}{School of Computing, Dundee}
+    \resumeRefereeHeading{Mr Brian McNicol}{\href{mailto:brian@532design.com}{\uline{brian@532design.com}}}
+    {CEO}{532 Design}
+  \resumeHeadingListEnd{}
+%--------------------------------------------
+
+\end{document}
