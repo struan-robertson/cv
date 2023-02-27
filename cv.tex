@@ -164,6 +164,16 @@
 \newcommand{\resumeHeadingListEnd}{\end{itemize}}
 %-------------------------------------------
 
+%-----------High School-------------------------
+% More reasonable spacing when not including a second title in the quad heading
+\newcommand{\resumeSchoolHeading}[5]{
+  \item
+  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    #3 & \textit{\small #4} \\
+    #5
+  \end{tabular*}
+}
 %__________________RESUME____________________
 % You can rearrange sections in any order you may prefer
 \begin{document}
@@ -209,11 +219,11 @@
   \resumeHeadingListEnd{}
 %--------------------------------------------
 
-%-----------EDUCATION-------------------------
-% Mention your CGPA, if its good, in the first row of second column
+
 
 \section{Education}
   \resumeHeadingListStart{}
+
     \resumeQuadHeading{University of Dundee}{Dundee, Scotland}
     {BSc in Applied Computing (On track for a first class honors)}{Sep. 2019 -- Jun. 2023}
       \resumeItemListStart{}
@@ -224,15 +234,16 @@
     \resumeQuadHeading{UHI West Highland College}{Online -- Fort William, Scotland}
     {Foundation Apprenticeship in Information Technology: Software Development}{Sep. 2017 -- Jun. 2019}
 
-    % TODO create custom tri heading for high school as got multiple qualifications
-    % Or potentially just dont add the high school results as I dont think they reflect on me that well
-    \resumeQuadHeading{Mallaig High School}{Mallaig, Highlands, Scotland}
-    {}{Aug. 2013 -- Jun. 2019}
-      \resumeItemListStart{}
-        \resumeItem{\textbf{2019 Higher:} Computer Science \textbf{\textit{A}}, Mathematics \textbf{\textit{A}}, Chemistry \textbf{\textit{B}}}
-        \resumeItem{\textbf{2018 Higher:} English \textbf{\textit{B}}}
-        \resumeItem{\textbf{2017 Higher:} Physics \textbf{\textit{B}}}
-      \resumeHeadingListEnd{}
+    \resumeSchoolHeading{Mallaig High School}{Mallaig, Highlands, Scotland}
+    {}{Aug. 2013 -- Jun. 2019}{
+      \begin{minipage}[t]{0.7\textwidth}
+        \resumeItemListStart{}
+          \resumeItem{\textbf{2019 Higher:} Computer Science \textbf{\textit{A}}, Mathematics \textbf{\textit{A}}, Chemistry \textbf{\textit{B}}}
+          \resumeItem{\textbf{2018 Higher:} English \textbf{\textit{B}}}
+          \resumeItem{\textbf{2017 Higher:} Physics \textbf{\textit{B}}}
+        \resumeHeadingListEnd{}
+      \end{minipage}
+    }
 
   \resumeHeadingListEnd{}
 %---------------------------------------------
