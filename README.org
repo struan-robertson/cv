@@ -1,4 +1,6 @@
-#+title: Readme
+#+title: Curriculum Vitae
 
 A fork of [[https://www.overleaf.com/latex/templates/rezume/kfrvqywfkwjs][rezume]] with some minor changes and a couple new commands.
 MIT Licence
+
+# Should add a link to the compiled cv
